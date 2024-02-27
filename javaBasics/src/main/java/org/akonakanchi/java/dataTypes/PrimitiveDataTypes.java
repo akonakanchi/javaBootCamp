@@ -8,6 +8,7 @@ public class PrimitiveDataTypes {
     int i =10101010;
     // float and double stores decimal numbers but float round's off
     double d =10.1234;
+
     float f = 10.2345f;
     // stores whole numbers occupies 8 bytes(64 bit) longer than int
     long l = 102000l;
