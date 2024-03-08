@@ -506,10 +506,10 @@ Exception -- Runtime Exception
 Exception -- IO Exception
 Exception -- Interrupted Exception
 Exception -- Remote Exception
-Runtime Exception: UnChecked Exception
-IO Exception: Fully Checked Exception
-Interrupted Exception: Fully Checked Exception
-Remote Exception: Fully Checked Exception
+RuntimeException: UnChecked Exception
+IOException: Fully Checked Exception
+InterruptedException: Fully Checked Exception
+RemoteException: Fully Checked Exception
 Error -- JVM Error
 Error -- Assertion Error
 Error -- Linkage Error
@@ -527,6 +527,8 @@ Error -- Linkage Error
 
 ## Tips
 - Code blocks
+  - Anything between {} is called code block.
+  - There can be static code block in a class.
 - **_Access Modifiers_** for methods, variables and classes
   - **public**
   - **private** [Cannot use on class]
@@ -544,5 +546,24 @@ Error -- Linkage Error
     - If a variable is declared static, it is shared across multiple instances of that class.
     - If a method is declared static, it can be called without an instance of the class.
     - Static Methods cannot use instance methods or instance variables. However, in non-static methods we can use static variables or methods.
-    - 
-   
+- **_Nested Classes_**
+  - A class can be created inside the class, we can create in 2 types.
+    - **Inner Class**
+      - To create instance of this inner class I need Instance of parent/enclosing class.
+    - **static Inner class**
+      - An instance of this static inner class can be created.
+- **_Anonymous Class_**
+  - Any class that do not have a name is called Anonymous class. Typically, can be used in Methods.
+- **_Enum_**
+  - Example 
+       enum season{ WINTER,SUMMER}
+
+
+## Java New Fetures java 10 to 16
+- Java Modularization
+  - java --list-modules
+  - Instead of one rt.jar (runtime jar) from java 8 since the size is growing up they have dividived rt.jar into multiple modules.
+  - require module;
+  - require transitive module
+  - export package;
+  - opens package.a to module.b
