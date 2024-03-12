@@ -3,7 +3,7 @@
 - Primitives are actual values and non-primitives are references. 
 - #### Arthematic Operators 
     - Add(+)  
-    - Substract (-)  
+    - Subtract (-)  
     - Multiplication (*)  
     - Division (/)  
     - Modulus (%)
@@ -111,7 +111,7 @@ ___________________________________________________________________
 ### Encapsulation
 
 ### Polymorphism
-- Ability to take different forms of an object is caled polymorphism.
+- Ability to take different forms of an object is called polymorphism.
 
 
 ___________________________________________________________________
@@ -159,15 +159,17 @@ classDiagram
     Non-Primitive --|> NonLinear
     class Linear
     Linear --|> Static
-    Linear --|> Dynimic
+
+    Linear --|> Dynamic
     class Static
     Static --|> Array
     Static --|> Hashing
-    class Dynimic
-    Dynimic --|> LinkedList
-    Dynimic --|> Stack
-    Dynimic --|> Queue
-    Dynimic --|> Hashing
+    class Dynamic
+    Dynamic --|> LinkedList
+    Dynamic --|> Stack
+    Dynamic --|> Queue
+    Dynamic --|> Hashing
+
     class LinkedList
     LinkedList --|> Singly-linked list
     LinkedList --|> Doubly Linked list
@@ -268,7 +270,9 @@ class List
 - List.set(6,"element at this index will be replaced with this value");
 - list.remove(basedOnIndex);
 - list.remove("StringValue");
-- numbersListVarible.indexOf(22);
+
+- numbersListVariable.indexOf(22);
+
 - numbersListVariable.remove(index) or numbersListVariable.remove(Object)
 - Collections.sort(numbersListVariable);
 
@@ -312,7 +316,7 @@ Set <|-- SortedSet
               3. numbersTreeSet.ceiling(28); //52 greater than equal to
               4. numbersTreeSet.higher(27); //  greater than
               5. numbersTreeSet.subSet(25,50); // 27,lower is inclusive and upper limit is exclusive
-              6. numbersTreeSet.subSet(27,false,80,true); //boolien is used to explicitly call inclusive or exclusive
+              6. numbersTreeSet.subSet(27,false,80,true); //boolean is used to explicitly call inclusive or exclusive
               7. numbersTreeSet.headSet(27); // returns all below this number
               8. numbersTreeSet.tailSet(27); //returns all above this number
         - ***LinkedHashSet***
@@ -368,7 +372,7 @@ class Queue
 - ***Deque*** ("double-ended queue")
     - Collection used to hold multiple elements prior to processing.
     - Besides basic Collection operations, a Deque provides additional insertion, extraction, and inspection operations.
-    - Deques can be used both as **FIFO** (first-in, first-out) and **LIFO** (last-in, first-out).
+    - Deque can be used both as **FIFO** (first-in, first-out) and **LIFO** (last-in, first-out).
     - In a deque all new elements can be inserted, retrieved and removed at both ends.
 
     ##### Examples
@@ -477,7 +481,7 @@ __________________________________________________________________________
   - BLOCKED/WAITING
   - TERMINATED/DEAD
 - Priority for Specific Task/thread
-  - taskThread.setPriority(Priorityvalue);
+  - taskThread.setPriority(Priority-value);
   - Priority value can be from 1 to 10; 1 is min and 10 is max, 5 is by default to all threads;
 - Communication between Threads
   - task.join(); will wait till this task/thread is completed
@@ -485,7 +489,7 @@ __________________________________________________________________________
   - More better way to create manage and process threads based on logic;
     - ExecutorService es = Executors.newSingleThreadExecutor();
     - es.shutdown();
-    - For specifiying how many threads can run at a time
+    - For specifying how many threads can run at a time
       - ExecutorService es = Executors.newFixedThread(threadCount);
 
 
@@ -521,7 +525,8 @@ Error -- Linkage Error
 - Creating a custom Exception.
 
 ## Concurrency
-- Locks is alternate to Synchronize. Synchronized is for entire methood rather Lock is for specific piece of code at the required point.
+- Locks is alternate to Synchronize. Synchronized is for entire method rather Lock is for specific piece of code at the required point.
+
 - **Atomic Classes** 
 
 
@@ -559,11 +564,28 @@ Error -- Linkage Error
        enum season{ WINTER,SUMMER}
 
 
-## Java New Fetures java 10 to 16
+## Java New Features java 10 to 16
 - Java Modularization
   - java --list-modules
-  - Instead of one rt.jar (runtime jar) from java 8 since the size is growing up they have dividived rt.jar into multiple modules.
-  - require module;
-  - require transitive module
-  - export package;
-  - opens package.a to module.b
+  - Instead of one rt.jar (runtime jar) from java 8 since the size is growing up they have divided rt.jar into multiple modules.
+
+          - requires module;
+          - requires transitive module
+          - export package;
+          - opens package.a to module.b
+- Java API new Features
+    - copyOf methods on collections
+    - Files.readString
+    - Files.writeString
+    - Predicate.not
+    - String new methods
+    - Type Inference
+        - instead of actually type you can use **var** from java 10. java will figure out what is the type and all the methods are available.
+    - Switch expressions from V14 instead of switch blocks.
+    - Text block is similar to string and all operations are available. text block starts with 3 double quotes followed by new line and ended with 3 double quotes.
+        - any character or n new lines can be present in that string.
+        - this is introduced from V15
+    - Records
+        - when using records Public accessor Methods, constructor, equals, hashcode and to string are automatically created.
+        - we can also create custom implementation for these methods.
+

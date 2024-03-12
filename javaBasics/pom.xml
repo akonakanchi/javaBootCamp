@@ -7,6 +7,7 @@
     <groupId>org.akonakanchi.java</groupId>
     <artifactId>javaBasics</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
