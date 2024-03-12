@@ -159,6 +159,7 @@ classDiagram
     Non-Primitive --|> NonLinear
     class Linear
     Linear --|> Static
+
     Linear --|> Dynamic
     class Static
     Static --|> Array
@@ -168,6 +169,7 @@ classDiagram
     Dynamic --|> Stack
     Dynamic --|> Queue
     Dynamic --|> Hashing
+
     class LinkedList
     LinkedList --|> Singly-linked list
     LinkedList --|> Doubly Linked list
@@ -268,7 +270,9 @@ class List
 - List.set(6,"element at this index will be replaced with this value");
 - list.remove(basedOnIndex);
 - list.remove("StringValue");
+
 - numbersListVariable.indexOf(22);
+
 - numbersListVariable.remove(index) or numbersListVariable.remove(Object)
 - Collections.sort(numbersListVariable);
 
@@ -522,6 +526,7 @@ Error -- Linkage Error
 
 ## Concurrency
 - Locks is alternate to Synchronize. Synchronized is for entire method rather Lock is for specific piece of code at the required point.
+
 - **Atomic Classes** 
 
 
@@ -583,3 +588,4 @@ Error -- Linkage Error
     - Records
         - when using records Public accessor Methods, constructor, equals, hashcode and to string are automatically created.
         - we can also create custom implementation for these methods.
+
