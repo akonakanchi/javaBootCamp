@@ -197,6 +197,8 @@ classDiagram
 ### [Collection Types](https://docs.oracle.com/javase/tutorial/collections/interfaces/index.html)
 The Core Collection interface encapsulates different types of collections like below.
 
+https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220526152255/Collections-in-Java1.png
+
 ```mermaid
 ---
 title: Collections Interface
