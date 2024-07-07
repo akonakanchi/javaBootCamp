@@ -1,4 +1,35 @@
 
+## Topics to learn
+
+1. Basic Java
+2. Advanced Java
+   - Java in built Annotation
+   - Creating Custom Annotation
+3. Functional Programming
+    - Reactive Streams
+    - Streams
+    - Reactive Core
+4. Algorithms and Data Structures
+5. Spring Framework
+   - Run all Java application using Spring Framework by creating Beans
+6. SpringBoot Framework
+   - Spring Boot WebFlux
+   - Host Spring REST API
+   - Consume Spring REST API
+   - Host Spring SOAP API
+   - Consume SOAP API
+   - Connect to MQ or Kafka and publish/consume events
+7. Little Background of J2EE, JPA etc.
+8. Spring Security
+9. Spring Cloud
+10. Lombok Project
+11. Jackson Framework
+
+**_OTHER Classes or Packages to look_**
+1. Mono
+2. Flux
+3. MapStruct Java been mapper
+
 ## Basics
 - Primitives are actual values and non-primitives are references. 
 - #### Arthematic Operators 
@@ -30,7 +61,24 @@
 
 _________________________________________________________________________________
 _________________________________________________________________________________
-
+### Character
+- The Character class wraps a value of the primitive type char in an object.
+- In addition, this class provides a large number of static methods for determining a character's category (lowercase letter, digit, etc.) and for converting characters from uppercase to lowercase and vice versa.
+  - **Character class Static methods** [[Reference to Oracle Docs]](https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html)
+    ````
+        .charValue()
+        .compare(char x, char y)
+        .compareTo(Character anotehrCharObject)
+        .getNumericValue(char c)
+        .isAlphabetic()
+        .isLetter()
+        .isLowerCase()
+        .isSpaceChar()
+        .isUpperCase()
+        .toLowerCase()
+        .toString()
+        .toUpperCase()
+    ````
 ### String
 - String class represents character strings, String is immutable in Java.
 - When we create a String using double quotes, JVM first looks for the String with the same value in the string pool. If found, it returns the reference of the string object from the pool. Otherwise, it creates the String object in the String pool and returns the reference.
@@ -82,17 +130,51 @@ ___________________________________________________________________
 
 ## OOPS
 
+1. Class
+2. Object
+3. Method and method passing
+4. 4 Pillars of OOPS
+   1. Abstraction
+   2. Encapsulation
+   3. Inheritance
+   4. Polymorphism
+      1. Compile time Polymorphism
+      2. Runtime Polymorphism 
 ### Constructor
 - Java provides default constructor for the classes if no constructor is declared.
 
 
 ### Inheritance
+Inheritance is an important pillar of OOP (Object Oriented Programming). 
+It is the mechanism in Java by which one class is allowed to inherit the features (fields and methods) of another class. 
+We are achieving inheritance by using extends keyword.
 
+### Abstraction
+  Abstraction is the property by virtue of which only the essential details are displayed to the user. 
+  The trivial or non-essential units are not displayed to the user. 
+  [Hiding the implementation details of a code and exposing only the necessary information to the user]
+- Abstract class can have Constructors, But they cannot be instantiated directly.
+- Constructors are used when concrete subclass is created. [Click for More Info](https://www.javatpoint.com/constructor-in-abstract-class-in-java#:~:text=Abstract%20classes%20can%20have%20constructors,by%20means%20of%20the%20class.)
+- Abstract class will have Abstract Methods and non-Abstract Methods.
+- Abstract clas can have member variables also.
+- **abstract** is the key word.
+- When abstract class **extends** another abstract class no need to implement for the abstract methods.
+
+### Encapsulation
+- In object-oriented computer programming (OOP) languages, the notion of encapsulation (or OOP Encapsulation) refers to the bundling of data, along with the methods that operate on that data, into a single unit.
+- Encapsulation is a way to restrict the direct access to some components of an object,
+  so users cannot access state values for all of the variables of a particular object.
+  Encapsulation can be used to hide both data members and data functions or methods associated with an instantiated class or object.
+
+### Polymorphism
+- Ability to take different forms of an object is called polymorphism.
+  - Overloading Polymorphism
+  - Overriding Polymorphism
 
 ### Interface
 - Objects cannot be created for Java Interface i.e. it will not have constructors and cannot be declared as new Interface();
 - Interface class can extend another Interface
-- Interface will have un-implemented methods i.e. method signatures. 
+- Interface will have un-implemented methods i.e. method signatures.
 - Concrete Classes that **implements** Interface has to implement the Methods.
 - When Abstract class implements and Interface Class then abstract class can provide implementation for some or none of the methods in the Interface.
 - Concrete class that extends abstract has to provide implementation for all the abstract methods in abstract class and the Interface that Abstract class is extending.
@@ -100,21 +182,21 @@ ___________________________________________________________________
 - From java-9 non-static methods can also be created but has to be private.
 - Concrete class can override the implementation of method in interface.
 
-### Abstract
-- Abstract class can have Constructors, But they cannot be instantiated directly.
-- the constructors are used when concrete subclass is created. [Click for More Info](https://www.javatpoint.com/constructor-in-abstract-class-in-java#:~:text=Abstract%20classes%20can%20have%20constructors,by%20means%20of%20the%20class.)
-- Abstract class will have Abstract Methods and non-Abstract Methods.
-- Abstract clas can have member variables also.
-- **abstract** is the key word.
-- When abstract class **extends** another abstract class no need to implement for the abstract methods.
-
-### Encapsulation
-
-### Polymorphism
-- Ability to take different forms of an object is called polymorphism.
-
-
 ___________________________________________________________________
+
+#### Usefull Functions, Classes and Methods
+- The java.lang.Math.floor() returns the double value that is less than or equal to the argument and is equal to the nearest mathematical integer.
+    ````
+        double a = 4.3;
+        Math.floor(a); // OUTPUT 4.0
+    ````
+- parseInt() method is a method of Integer class under java.lang package. There are three different types of Java Integer parseInt () methods which can be differentiated depending on its parameter.
+  ````
+  Integer.parseInt("20"); 
+  Integer.parseInt("-20"); 
+  Integer.parseInt("+20"); 
+  Double.parseDouble("5");
+  ```` 
 ___________________________________________________________________
 ## Collections & Data Structures
 
@@ -129,7 +211,6 @@ class DataStructure_Types
     DataStructure_Types --|> Primitive
     DataStructure_Types --|> Non-Primitive
 ```
-- Java Data Structures are classified into 2 types Linear and nonLinear.
 
 ___
 
@@ -148,7 +229,7 @@ Primitive --|>  long
 Primitive --|>  double
 Primitive --|>  boolean
 ``` 
-
+- Non-Primitive Data Structures are classified into 2 types Linear and nonLinear.
 ```mermaid
 ---
 title: Non- Primitive DataStructures
@@ -189,9 +270,70 @@ classDiagram
 - Dynamic Data Structures whose size is not fixed at compile time and can be decided at runtime depending upon requirements are called Dynamic Data structures.
 - Few other types of DataStructures are 
    - **Heap**
+
 - ***Array***
   - Array is the simplest data structure where a collection of similar data elements takes place and each data element can be accessed directly by only using its index number.
+  - An array can contain primitives (int, char, etc.) and object (or non-primitive) references of a class depending on the definition of the array.
+    - Creating, Initializing, and Accessing an Arrays
+        - One-Dimensional Arrays
+          ````
+          int intArray[]; or int[] intArray;
+          int[] intArray = new int[20];  
+          ````   
+        - Multidimensional-Dimensional Arrays
+          ````
+          datatype [][] arrayrefvariable;
+          int[][] arr = new int[3][3];
+          int[][] intArray = new int[10][20]; //a 2D array or matrix
+          int[][][] intArray = new int[10][20][10]; //a 3D array
+          ````
+    - **Arrays class in java.util package** is a part of the Java Collection Framework.
+      - This class provides static methods to dynamically create and access Java arrays. It consists of only static methods and the methods of Object class.
+      - In order to use Arrays
+        ````
+        Syntax : Arrays.<function name>;
+            Arrays.asList(); Modifies the orginal array also and it is immutable;
+        String[] stringArray = new String[] { "A", "B", "C", "D" }; 
+        List stringList = new ArrayList<>(Arrays.asList(stringArray));
 
+        ````
+      ###### Methods in Java Array Class
+      ````
+      - asList() 
+      - binarySearch()  
+          --> Searches for the specified element in the array with the help of the Binary Search Algorithm
+      - binarySearch(array, fromIndex, toIndex, key, Comparator)
+           --> Searches a range of the specified array for the specified object using the Binary Search Algorithm.
+      - compare(array 1, array 2) 
+           --> Compares two arrays passed as parameters lexicographically.
+      - copyOf(originalArray, newLength)
+      - copyOfRange(originalArray, fromIndex, endIndex)
+      - equals(array1, array2)
+      - mismatch(array1, array2) 
+          --> Finds and returns the index of the first unmatched element between the two specified arrays.
+      - fill(originalArray, fillValue)
+          --> Assigns this fill value to each index of this arrays.
+      - parallelSort(originalArray
+          --> Sorts the specified array using parallel sort.
+      - sort(originalArray)
+      - sort(originalArray, fromIndex, endIndex)
+      - stream(originalArray)
+      - hashCode(originalArray)
+          --> Returns an integer hashCode of this array instance.
+      ````
+    - **_Reflection Array Class in java.lang.reflect package_**
+      - This class provides static methods to create and access Java arrays dynamically.
+      - It is a final class, which means it can’t be instantiated or changed.
+      - The java.util.Arrays class contains various methods for manipulating arrays (such as sorting and searching), whereas this java.lang.reflect.Array class provides static methods to create and access Java arrays dynamically.
+        ````
+        Syntax : Arrays.<function name>;
+        ````
+      ###### Methods in Reflection Array Class in Java [[Reference to Methods]](https://www.geeksforgeeks.org/reflection-array-class-in-java/?ref=next_article)
+         ````
+      - Object get(Object array, int index)
+      - 
+         ````
+      
 ---------------------------------------------------
 
 ### [Collection Types](https://docs.oracle.com/javase/tutorial/collections/interfaces/index.html)
@@ -588,4 +730,5 @@ Error -- Linkage Error
     - Records
         - when using records Public accessor Methods, constructor, equals, hashcode and to string are automatically created.
         - we can also create custom implementation for these methods.
+
 
