@@ -209,7 +209,7 @@ Advanced Spring
   - Dependency management
   - web.xml configuration like Dispatcher servlet.
   - Spring configuration like component scan etc
-  - Implement non functional requirements.
+  - Implement non functional requirements.:q
 
     
 - **SpringBoot Starter Projects**
