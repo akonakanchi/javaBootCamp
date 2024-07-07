@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LearnSpringBootApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(LearnSpringBootApp.class,args);
+        var v1 = SpringApplication.run(LearnSpringBootApp.class,args);
+        System.out.println("*************************************");
+        System.out.println(v1.getBeanDefinitionNames());
     }
 }
