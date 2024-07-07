@@ -1,5 +1,7 @@
 # Spring Framework
 
+- Spring Release Versioned 
+  - Major.Minor.Patch[-Modifier] 
 ````
 Spring
     - Tight Coupling
@@ -10,6 +12,8 @@ Spring
     - Spring Beans
     - Auto Wiring
     - Component Scan
+    
+    var context = new AnnotationConfigApplicationContext(Runner.class)
 
 Advanced Spring
     - Lazy Initialization
@@ -23,6 +27,14 @@ Advanced Spring
     - Alternatives @Componenet
     - Spring Modules and Projects
 ````
+- **Spring Modules**
+  - ***Core:*** IoC Containers
+  - ***Testing:*** Mock Objects, Spring Mvc Test etc.
+  - ***Data Access:*** Transactions, JDBC, JPA etc.
+  - ***Web Servlet:*** Spring MVC etc..
+  - ***Web Reactive:*** Spring WebFlux etc.
+  - ***Integrations:*** JMS etc.
+
 
 - **_Spring Container vs Spring Context vs IOC container vs Application Context_**
 - **Spring Container or IOC Container**
@@ -44,15 +56,15 @@ Advanced Spring
   - POJO
     - Any Class that we create are java objects.
     - No constraints
-    - Spring Bean
-      - Any java object managed by IOC is spring bean
-      ````
-      - How to List all Beans managed by spring
-        - context.getBeanDefinitionNames();
-      - Beans with same names or matching names?
-        - Making one of the been @Primary
-        - or use @Qualifier("Qualifier_name")
-      ````
+  - Spring Bean
+    - Any java object managed by IOC is spring bean
+    ````
+    - How to List all Beans managed by spring
+      - context.getBeanDefinitionNames();
+    - Beans with same names or matching names?
+      - Making one of the been @Primary
+      - or use @Qualifier("Qualifier_name")
+    ````
 
 - **Spring Dependency Injections Types**
   - Identifies beans and their dependencies and wire them (IOC is achieved)
@@ -64,7 +76,7 @@ Advanced Spring
     - Dependencies are set by calling setter methods on beans.
   - **_Field Injection_**
     - No Setter or Constructor, Dependency is injected using reflection
-    - 
+  - **Spring team recommends using constructor based Injection.** 
 ## Advanced Spring
 - **Lazy Initialization**
   - Default initialization of a bean is called Eager, unless @Lazy is annotated.
@@ -126,6 +138,7 @@ Advanced Spring
 4. @ComponentScan("Package")
    - Scans all the components in that particular package and its sub-package.
    - If the package is not specified it will take current package
+   - Scaning multiple packages @ComponentScan({"Package1","Package2"})
 5. @Primary
    - A bean should be given preference when Multiple candidates are qualified.
 6. @Qualifier("Qualifier_name")
@@ -144,6 +157,12 @@ Advanced Spring
     - Identifies the method that will receive callback notification to signal that the instance is in the processes of being removed by container.
     - Typically used to release the resource that it has been holding.
     - After all the logic is done for final clean up on method.
+12. @Entity
+    - When we want to map class with DB table.
+13. @Transactional
+    - For the JPA repo class this annotation is required to do a txn with DB.
+14. @SpringBootApplication
+15. 
 14. **Spring Stereotype Annotations**
   - @Component - Generic annotation applicable for any class
       - Base for all Spring Stereotype Annotations
@@ -156,16 +175,99 @@ Advanced Spring
           - If bean is talking to DB for retrieve/Modify.
 
 
+
 # Spring Boot
+- Goal of Spring boot is build Production ready app quickly.
+  - Build quickly
+  ````
+    - Spring Initilizer
+    - Starter Projects
+    - Auto Configuration [Autoconfigure.jar]
+    - Default logging [default Logging level is INFO]
+    - Actuator [For monitoring]
+    - Developer Tools [No need to restart server after code change etc]
+  ````
+  - Managing application configurations using profiles [to use app in different environments]
+    - Profile enable to provide environment specific configuration
+    - When no profile is set or properties are not defined in that specific environment, it will pick up from default profile.
+  
+## Spring Boot Annotations
+1. @RestController 
+   - Can use this for a controller class where endpoints are hosted.
+2. @RequestMapping("/URL")
+3. @GetMapping("/URL")
+4. @PostMapping("/URL")
+5. @ConfigurationProperties(prefix = "currency-service")
+   - If a class is marked with this annotation we can define these values in properties file.
 
-````
-- Spring Initilizer
-- Auto Configuration
-- Actuator
-- developer Tools 
-````
 
+
+
+### Before Spring Boot
+- Setting up Spring project is not easy lot of configuration is required
+  - Lot of configuration is required for production reediness.
+  - Dependency management
+  - web.xml configuration like Dispatcher servlet.
+  - Spring configuration like component scan etc
+  - Implement non functional requirements.
+
+    
 - **SpringBoot Starter Projects**
   - Help you get a project up and running easily.
 - **SpringBoot Auto Configuration**
   - Spring Boot Auto configuration looks at the class Path and what is the exsisting configuration.
+
+# Spring Boot Reactive Programming
+
+1. Asynchronous and non-blocking
+2. Functional style code
+3. Data FLows as event Driven Stream
+4. BackPressure on data Streams
+
+- **_Mono<>_** DataType -> Accepts one element at a time
+- **_Flux<>_** DataType -> Accepts multiple elements at a time
+
+- Reactive Stream Specifications(Interfaces)
+  - Publisher
+    - This is an data source who will always publish an event
+  - Subscriber
+    - Subscriber will consume the events from Publisher
+  - Subscription
+    - This represents the uniq releation between Subscriber and Publisher
+  - Processor
+    - Processor represents the processing stage for bot Subscriber and Publisher and MUST obey both the contracts
+
+- Reactive Programming Libraries
+  - Reactor [Recommended for Spring Boot]
+  - RxJava
+  - Jdk9 Flow Reactive Stream
+
+## Other key Points of Spring
+- When you have some logic to run at the start of spring application we can make use of  "CommandLineRunner" Interface. [Make class extends CommandLineRunner]
+- 
+## Spring JDBC and JDBC and JPA/  Hibernate and Spring Data JPA
+### JDBC
+- Lot of SQL queries
+- Lot of java code
+### Spring JDBC
+- Lot of SQL queries
+- Less java code
+
+### JPA
+- No SQLs just map entities to tables
+- **@Entity** Maps java class to DB table
+- When using JPA to talk to DB we need to create "EntityManager". [Entity manager is where all the methods are present to manipulate tables]
+- **@PersistenceContext** for entity manager variable instead of @Autowired
+- **@Transactional,@Repository** needs to be added to the class where entityManger is executed
+
+### Spring Data JPA    
+- Everything will be taken care no need of Entity manager also.
+- **When making use of Spring Data JPA we will be making use of Interface extend repository interface to **"JpaRepository< Class, PrimaryKey>"**
+- We can define custom methods in the repository interface on top of methods provided JpaRepository.
+
+### Hibernate vs JPA
+- Hibernate is the implementation of JPA
+- JPA is an API, it defines specifications. JPA lets you defines entities.
+- JPA uses Hibernate in the background.
+# Kafka
+
